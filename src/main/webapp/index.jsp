@@ -21,14 +21,22 @@
 
 <p><b>Authenticated User Id: </b><%= request.getRemoteUser() %>
 </br>
+
+<p><b>Authenticated User Password: </b><%
+ AttributePrincipal principal = (AttributePrincipal) request.getUserPrincipal();
+ final Map attributes = principal.getAttributes();
+ String encodedPsw = (String) attributes.get("credential");
+ out.println(encodedPsw);
+ %>
+</br>
+
+
 <a href="logout.jsp" title="Click here to log out"> logout </a>
 </p>
 
 <%
     if (request.getUserPrincipal() != null) {
-        AttributePrincipal principal = (AttributePrincipal) request.getUserPrincipal();
 
-        final Map attributes = principal.getAttributes();
 
         if (attributes != null) {
             Iterator attributeNames = attributes.keySet().iterator();

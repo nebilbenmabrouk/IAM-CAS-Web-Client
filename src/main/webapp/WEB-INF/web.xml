@@ -62,7 +62,6 @@
         <filter-class>org.jasig.cas.client.util.HttpServletRequestWrapperFilter</filter-class>
     </filter>
 
-
     <filter-mapping>
         <filter-name>CAS Single Sign Out Filter</filter-name>
         <url-pattern>/*</url-pattern>
