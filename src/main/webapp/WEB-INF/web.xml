@@ -30,10 +30,10 @@
             <param-value>https://localhost:8444/iam-client-1</param-value>
         </init-param>
     </filter>
-
+<!--
     <filter>
         <filter-name>CAS Validation Filter</filter-name>
-        <!--<filter-class>org.jasig.cas.client.authentication.Saml11AuthenticationFilter</filter-class>-->
+
         <filter-class>org.jasig.cas.client.validation.Cas30ProxyReceivingTicketValidationFilter</filter-class>
         <init-param>
             <param-name>casServerUrlPrefix</param-name>
@@ -43,20 +43,9 @@
             <param-name>serverName</param-name>
             <param-value>https://localhost:8444/iam-client-1</param-value>
         </init-param>
-        <!--     <init-param>
-                 <param-name>authn_method</param-name>
-                 <param-value>mfa-duo</param-value>
-             </init-param>
-             <init-param>
-                 <param-name>redirectAfterValidation</param-name>
-                 <param-value>true</param-value>
-             </init-param>
-             <init-param>
-                 <param-name>useSession</param-name>
-                 <param-value>true</param-value>
-             </init-param>  -->
-    </filter>
 
+    </filter>
+-->
     <filter>
         <filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
         <filter-class>org.jasig.cas.client.util.HttpServletRequestWrapperFilter</filter-class>
@@ -71,12 +60,12 @@
         <filter-name>CAS Authentication Filter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
+<!--
     <filter-mapping>
         <filter-name>CAS Validation Filter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
+-->
     <filter-mapping>
         <filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
         <url-pattern>/*</url-pattern>
