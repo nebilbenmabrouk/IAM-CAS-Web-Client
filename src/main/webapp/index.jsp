@@ -3,6 +3,8 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.ow2.proactive.iam.client.authorization.utils.JWTUtils" %>
+<%@ page import="org.ow2.proactive.iam.client.authorization.utils.CredentialsUtils" %>
 <%@ page import="org.apache.commons.codec.binary.Base64" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -25,31 +27,35 @@
 
 
 <%
-String token = request.getParameter("ticket") ;
+String token = request.getParameter("ticket");
 %>
 
 <p><b>Authentication JWT Token: </b><%= token %>
 </br>
 
 <%
-String[] split_string = token.split("\\.");
+        String[] split_string = token.split("\\.");
         String base64EncodedHeader = split_string[0];
         String base64EncodedBody = split_string[1];
         //String base64EncodedSignature = split_string[2];
 
+        String header = JWTUtils.decodeJWTHeader(base64EncodedHeader);
+        String body = JWTUtils.decodeJWTBody(base64EncodedBody);
+        String encryptedCreds = JWTUtils.getCredFromJWT(body);
 
-        Base64 base64Url = new Base64(true);
-        String header = new String(base64Url.decode(base64EncodedHeader));
-
-        String body = new String(base64Url.decode(base64EncodedBody));
-
-
+        String creds = CredentialsUtils.decryptCredential(CredentialsUtils.loadKeyFromFile("activeeon-private.p8"),encryptedCreds);
 %>
 
-<p><b>Decoded token header: </b><%= header %>
+<p><b>Decoded JWT header: </b><%= header %>
 </br>
 
-<p><b>Decoded token body: </b><%= body %>
+<p><b>Decoded JWT body: </b><%= body %>
+</br>
+
+<p><b>Encrypted Credential: </b><%= encryptedCreds %>
+</br>
+
+<p><b>Decrypted Credential: </b><%= creds %>
 </br>
 
 </body>
