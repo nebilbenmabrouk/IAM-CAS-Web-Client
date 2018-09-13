@@ -135,7 +135,7 @@ task integrationTest(type: Test) {
 
 gretty {
     httpsEnabled = true
-    httpsPort = 8444
+    httpsPort = 8445
     httpPort = 8081
     contextPath = '/iam-client-1'
     servletContainer = 'jetty9'

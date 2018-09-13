@@ -21,7 +21,7 @@
 <p>Application session is now invalidated. You may also issue a request to "/cas/logout" to destroy the CAS SSO Session as well.</p>
 <hr>
 
-<a href="https://localhost:8443/cas/logout">Single Sing out</a>
+<a href="https://localhost:8444/iam/logout">Single Sing out</a>
 
 <a href="index.jsp">Back to Home</a>
 </body>

@@ -33,7 +33,7 @@ String token = request.getParameter("ticket");
 <p><b>Authentication JWT Token: </b><%= token %>
 </br>
 
-<%
+<%--
         String[] split_string = token.split("\\.");
         String base64EncodedHeader = split_string[0];
         String base64EncodedBody = split_string[1];
@@ -41,21 +41,21 @@ String token = request.getParameter("ticket");
 
         String header = JWTUtils.decodeJWTHeader(base64EncodedHeader);
         String body = JWTUtils.decodeJWTBody(base64EncodedBody);
-        String encryptedCreds = JWTUtils.getCredFromJWT(body);
+        //String encryptedCreds = JWTUtils.getCredFromJWT(body);
 
-        String creds = CredentialsUtils.decryptCredential(CredentialsUtils.loadKeyFromFile("activeeon-private.p8"),encryptedCreds);
-%>
+        //String creds = CredentialsUtils.decryptCredential(CredentialsUtils.loadKeyFromFile("activeeon-private.p8"),encryptedCreds);
+--%>
 
-<p><b>Decoded JWT header: </b><%= header %>
+<p><b>Decoded JWT header: </b><%--= header --%>
 </br>
 
-<p><b>Decoded JWT body: </b><%= body %>
+<p><b>Decoded JWT body: </b><%--= body --%>
 </br>
 
-<p><b>Encrypted Credential: </b><%= encryptedCreds %>
+<p><b>Encrypted Credential: </b><%-- = encryptedCreds--%>
 </br>
 
-<p><b>Decrypted Credential: </b><%= creds %>
+<p><b>Decrypted Credential: </b><%-- = creds --%>
 </br>
 
 </body>
